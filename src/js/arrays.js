@@ -6,7 +6,7 @@
 */
 function forEach(array, callback) {
   for (let i = 0; i < array.length; i++) {
-    callback(array[i], i, array)
+    callback(array[i], i, array);
   }
 }
 
@@ -19,7 +19,7 @@ function forEach(array, callback) {
 function map(array, callback) {
   const mapResult = [];
   for (let i = 0; i < array.length; i++) {
-    mapResult.push(callback(array[i]))
+    mapResult.push(callback(array[i]));
   }
 return mapResult
 }
