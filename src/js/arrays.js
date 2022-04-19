@@ -5,7 +5,9 @@
  Помните, что вы передаете функцию, которая ожидает 3 аргумента, текущий элемент, индекс и сам массив. Автоматическая проверка будет это учитывать.
 */
 function forEach(array, callback) {
-
+  for (let i = 0; i < array.length; i++) {
+    callback(array[i], i, array)
+  }
 }
 
 /* Функция принимает в себе первым аргументом массив, вторым функцию которая будет вызываться для каждого элемента массива
@@ -15,7 +17,11 @@ function forEach(array, callback) {
  Помните, что вы передаете функцию, которая ожидает 3 аргумента, текущий элемент, индекс и сам массив. Автоматическая проверка будет это учитывать.
 */
 function map(array, callback) {
-
+  const mapResult = [];
+  for (let i = 0; i < array.length; i++) {
+    mapResult.push(callback(array[i]))
+  }
+return mapResult
 }
 
 /* Функция принимает в себе первым аргументом массив, вторым функцию которая будет вызываться для каждого элемента массива
@@ -25,7 +31,13 @@ function map(array, callback) {
  Помните, что вы передаете функцию, которая ожидает 3 аргумента, текущий элемент, индекс и сам массив. Автоматическая проверка будет это учитывать.
 */
 function filter(array, callback) {
-
+  const filterResult = []
+    for (let i = 0;  i < array.length; i++) {
+      if (callback(array[i])) {
+        filterResult.push(array[i]);
+      }
+    }
+    return filterResult;
 }
 
 /* Функция принимает в себе первым аргументом массив, вторым функцию которая будет вызываться для каждого элемента массива, 3 аргумент изначальный вариант
@@ -38,7 +50,11 @@ function filter(array, callback) {
  Помните, что вы передаете функцию, которая ожидает 3 аргумента, текущий элемент, индекс и сам массив. Автоматическая проверка будет это учитывать.
 */
 function reduce(array, callback, initialValue) {
-
+  let reduceResult=initialValue;
+  for (let i = 0;  i < array.length; i++) {
+    reduceResult = callback.call(initialValue, reduceResult, array[i], i, array);
+  }
+  return reduceResult;
 }
 
 /* Функция принимает в себе первым аргументом массив, вторым функцию которая будет вызываться для каждого элемента массива
@@ -47,8 +63,13 @@ function reduce(array, callback, initialValue) {
  Фишка задания сделать свою реализацию, чтобы понять, как он работает под капотом. Для перебора советую использовать for цикл
  Помните, что вы передаете функцию, которая ожидает 3 аргумента, текущий элемент, индекс и сам массив. Автоматическая проверка будет это учитывать.
 */
-function some(array, callback) {
-
+function some(array, callback, ) {
+    for (let i = 0;  i < array.length; i++) {
+    if(callback( array[i], i, array)){
+      return true;
+    }
+  }
+  return false;
 }
 
 /* Функция принимает в себе первым аргументом массив, вторым функцию которая будет вызываться для каждого элемента массива
@@ -58,7 +79,12 @@ function some(array, callback) {
  Помните, что вы передаете функцию, которая ожидает 3 аргумента, текущий элемент, индекс и сам массив. Автоматическая проверка будет это учитывать.
 */
 function every(array, callback) {
-
+  for (let i = 0;  i < array.length; i++) {
+    if(!callback( array[i], i, array)){
+      return false;
+    }
+  }
+  return true;
 }
 
 // Эту часть не удаляем, она важна для проверки результата
