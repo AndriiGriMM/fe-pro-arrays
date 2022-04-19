@@ -19,11 +19,10 @@ function forEach(array, callback) {
 function map(array, callback) {
   const mapResult = [];
   for (let i = 0; i < array.length; i++) {
-    mapResult.push(callback(array[i]));
+    mapResult.push(callback(array[i], i, array));
   }
 return mapResult
 }
-
 /* Функция принимает в себе первым аргументом массив, вторым функцию которая будет вызываться для каждого элемента массива
  вот документация https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
  Это используется для удобного быстрого перебора массива. Функция должна ВЕРНУТЬ НОВЫЙ массив, который включает в себя элементы только те, для которых callback вернул true.
@@ -33,7 +32,7 @@ return mapResult
 function filter(array, callback) {
   const filterResult = []
     for (let i = 0;  i < array.length; i++) {
-      if (callback(array[i])) {
+      if (callback(array[i], i, array)) {
         filterResult.push(array[i]);
       }
     }
